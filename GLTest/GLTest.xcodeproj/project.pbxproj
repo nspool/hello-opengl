@@ -30,14 +30,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		732CD8D21CDF5D680035AD89 /* triangles.frag */ = {isa = PBXFileReference; explicitFileType = compiled; fileEncoding = 4; path = triangles.frag; sourceTree = "<group>"; };
-		732CD8D31CDF5D680035AD89 /* triangles.vert */ = {isa = PBXFileReference; explicitFileType = compiled; fileEncoding = 4; path = triangles.vert; sourceTree = "<group>"; };
+		732CD8D21CDF5D680035AD89 /* triangles.frag */ = {isa = PBXFileReference; explicitFileType = compiled; fileEncoding = 4; name = triangles.frag; path = ../triangles.frag; sourceTree = "<group>"; };
+		732CD8D31CDF5D680035AD89 /* triangles.vert */ = {isa = PBXFileReference; explicitFileType = compiled; fileEncoding = 4; name = triangles.vert; path = ../triangles.vert; sourceTree = "<group>"; };
 		7333E82F1CDDB53A00419A9D /* GLTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GLTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7333E8321CDDB53A00419A9D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		73D191221CDDD9E000886A2B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		73D191241CDDD9E400886A2B /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
-		73F37F131E6D67B000387FE1 /* LoadShaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadShaders.cpp; sourceTree = "<group>"; };
-		73F37F141E6D67B000387FE1 /* LoadShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadShaders.h; sourceTree = "<group>"; };
+		73F37F131E6D67B000387FE1 /* LoadShaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadShaders.cpp; path = ../LoadShaders.cpp; sourceTree = "<group>"; };
+		73F37F141E6D67B000387FE1 /* LoadShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadShaders.h; path = ../LoadShaders.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,14 +56,9 @@
 		7333E8261CDDB53A00419A9D = {
 			isa = PBXGroup;
 			children = (
-				73F37F131E6D67B000387FE1 /* LoadShaders.cpp */,
-				73F37F141E6D67B000387FE1 /* LoadShaders.h */,
-				73D191241CDDD9E400886A2B /* GLUT.framework */,
-				73D191221CDDD9E000886A2B /* OpenGL.framework */,
+				733E81F71E6EA85B00E54E06 /* Frameworks */,
 				7333E8311CDDB53A00419A9D /* GLTest */,
 				7333E8301CDDB53A00419A9D /* Products */,
-				732CD8D21CDF5D680035AD89 /* triangles.frag */,
-				732CD8D31CDF5D680035AD89 /* triangles.vert */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,9 +73,38 @@
 		7333E8311CDDB53A00419A9D /* GLTest */ = {
 			isa = PBXGroup;
 			children = (
+				733E81F61E6EA85000E54E06 /* Helpers */,
+				733E81F51E6EA84900E54E06 /* Shaders */,
 				7333E8321CDDB53A00419A9D /* main.cpp */,
 			);
 			path = GLTest;
+			sourceTree = "<group>";
+		};
+		733E81F51E6EA84900E54E06 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				732CD8D21CDF5D680035AD89 /* triangles.frag */,
+				732CD8D31CDF5D680035AD89 /* triangles.vert */,
+			);
+			name = Shaders;
+			sourceTree = "<group>";
+		};
+		733E81F61E6EA85000E54E06 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				73F37F131E6D67B000387FE1 /* LoadShaders.cpp */,
+				73F37F141E6D67B000387FE1 /* LoadShaders.h */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		733E81F71E6EA85B00E54E06 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				73D191241CDDD9E400886A2B /* GLUT.framework */,
+				73D191221CDDD9E000886A2B /* OpenGL.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
