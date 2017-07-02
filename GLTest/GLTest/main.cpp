@@ -5,9 +5,10 @@
 
 
 #include <iostream>
-#include <GL/glew.h>
+
 #include <OpenGL/gl.h>
-#include <GLUT/glut.h>
+#include <GLFW/glfw3.h>
+
 #include "LoadShaders.h"
 
 #define BUFFER_OFFSET(x)  ((const void*) (x))
@@ -25,14 +26,14 @@ void
 init(void)
 {
     // allocate vertex array object names for our use
-    glGenVertexArrays(NumVAOs, VAOs);
+    glGenVertexArraysAPPLE(NumVAOs, VAOs);
     
     // create a new vertex-array objects for the previously assigned names
     // when binding an object for the first time OpenGL internally allocs memory
     // and makes the object *current*, ie. any operations relavent to the bound
     // object will affect its state from now on
     
-    glBindVertexArray(VAOs[Triangles]); // initialised to default state
+    glBindVertexArrayAPPLE(VAOs[Triangles]); // initialised to default state
     
     // use glDeleteVertexArrays to delete when finished, or
     // use glIsVertexArray to test if previously generated but not deleted
@@ -86,7 +87,7 @@ display(void)
     glClear(GL_COLOR_BUFFER_BIT);
     
     // Render objects
-    glBindVertexArray(VAOs[Triangles]);
+    glBindVertexArrayAPPLE(VAOs[Triangles]);
     
     // actually send vertex objects to the OpenGL pipeline
     glDrawArrays(GL_TRIANGLES, 0, NumVertices);
@@ -99,37 +100,45 @@ display(void)
 int
 main(int argc, char** argv)
 {
-    
-    // initialise the GLUT library
-    glutInit(&argc, argv);
+    GLFWwindow* window;
+   
+    // initialise the GLFW library
+    if (!glfwInit())
+        return -1;
     
     // type of window
-    glutInitDisplayMode(GLUT_RGBA | GLUT_3_2_CORE_PROFILE);
-    
-    // don't have to do this here, can query instead
-    glutInitWindowSize(512,512);
-    
-    // type of context; ie. what features
-    //	glutInitContextVersion(3,3);
-    // only the latest features
-    //	glutInitContextProfile(GLUT_CORE_PROFILE);
-    // with the display mode specified above
-    
-    glutCreateWindow(argv[0]);
-    
-    // helper lib
-    if(glewInit()) {
-        printf("Unable to initialise GLEW!\n");
-        exit(EXIT_FAILURE);
+    window = glfwCreateWindow(640, 480, "Hello OpenGL", NULL, NULL);
+    if (!window)
+    {
+        glfwTerminate();
+        return -1;
     }
     
-    init();
+    /* Make the window's context current */
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwMakeContextCurrent(window);
     
-    // setup the *display callback*, callbacks also used for user input, window resize etc
-    glutDisplayFunc(display);
+//    init();
     
     // infinite loop
     // invokes callbacks handle user input, determine if window needs repainting
-    glutMainLoop();
-    
+    while (!glfwWindowShouldClose(window))
+    {
+        /* Render here */
+        glClear(GL_COLOR_BUFFER_BIT);
+        
+//        display();
+        
+        /* Swap front and back buffers */
+//        glfwSwapBuffers(window);
+        
+        /* Poll for and process events */
+        glfwPollEvents();
+    }
+
+    glfwTerminate();
+    return 0;
 }
