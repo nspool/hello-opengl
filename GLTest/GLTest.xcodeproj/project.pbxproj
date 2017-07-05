@@ -41,7 +41,6 @@
 		73CF0B5C1F08EA88009A858A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		73CF0B5E1F08EA93009A858A /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		73CF0B601F08EA97009A858A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		73CF0B621F08EAA9009A858A /* libopencv_calib3d.3.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_calib3d.3.2.0.dylib; path = ../../../../../usr/local/lib/libopencv_calib3d.3.2.0.dylib; sourceTree = "<group>"; };
 		73CF0B641F08EAB8009A858A /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../usr/local/lib/libglfw3.a; sourceTree = "<group>"; };
 		73F37F131E6D67B000387FE1 /* LoadShaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadShaders.cpp; path = ../LoadShaders.cpp; sourceTree = "<group>"; };
 		73F37F141E6D67B000387FE1 /* LoadShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadShaders.h; path = ../LoadShaders.h; sourceTree = "<group>"; };
@@ -112,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				73CF0B641F08EAB8009A858A /* libglfw3.a */,
-				73CF0B621F08EAA9009A858A /* libopencv_calib3d.3.2.0.dylib */,
 				73CF0B601F08EA97009A858A /* Cocoa.framework */,
 				73CF0B5E1F08EA93009A858A /* IOKit.framework */,
 				73CF0B5C1F08EA88009A858A /* CoreVideo.framework */,
