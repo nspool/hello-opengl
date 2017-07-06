@@ -1,39 +1,53 @@
 //
-//  main.cpp
-//  GLTest by nspool
+// main.cpp
+// GLTest by nspool
 //
 
+#define GLFW_INCLUDE_GLCOREARB 1
 
 #include <iostream>
 
-#include <OpenGL/gl.h>
+#include <OpenGL/gl3.h>
 #include <GLFW/glfw3.h>
 
-#include "LoadShaders.h"
-
-#define BUFFER_OFFSET(x)  ((const void*) (x))
+#define BUFFER_OFFSET(x) ((const void*) (x))
 
 enum VAO_IDs { Triangles, NumVAOs };
 enum Buffer_IDs { ArrayBuffer, NumBuffers };
 enum Attrib_IDs { vPosition = 0 };
-GLuint  VAOs[NumVAOs];
-GLuint  Buffers[NumBuffers];
-const GLuint  NumVertices = 6;
+GLuint VAOs[NumVAOs];
+GLuint Buffers[NumBuffers];
+const GLuint NumVertices = 6;
 
 using namespace std;
+
+static const char* vertex_shader_text =
+"layout(location = 0) in vec4 vPosition;\n"
+"void main()\n"
+"{\n"
+" gl_Position = vPosition;\n"
+"}\n";
+
+static const char* fragment_shader_text =
+"out vec4 fColor;\n"
+"void main()\n"
+"{\n"
+" fColor = vec4(0.0, 0.0, 1.0, 1.0);\n"
+"}\n";
 
 void
 init(void)
 {
-    // allocate vertex array object names for our use
-    glGenVertexArraysAPPLE(NumVAOs, VAOs);
+    GLuint vertex_shader, fragment_shader, program;
+    
+    glGenVertexArrays(NumVAOs, VAOs);
     
     // create a new vertex-array objects for the previously assigned names
     // when binding an object for the first time OpenGL internally allocs memory
     // and makes the object *current*, ie. any operations relavent to the bound
     // object will affect its state from now on
     
-    glBindVertexArrayAPPLE(VAOs[Triangles]); // initialised to default state
+    glBindVertexArray(VAOs[Triangles]); // initialised to default state
     
     // use glDeleteVertexArrays to delete when finished, or
     // use glIsVertexArray to test if previously generated but not deleted
@@ -42,11 +56,11 @@ init(void)
     // normalised device coordinates, always within [-1,1] in x & y
     GLfloat vertices[6][2] = {
         { -0.90, -0.90 },
-        {  0.85, -0.90 },
-        { -0.90,  0.85 },
-        {  0.90, -0.85 },
-        {  0.90,  0.90 },
-        { -0.85,  0.90 }
+        { 0.85, -0.90 },
+        { -0.90, 0.85 },
+        { 0.90, -0.85 },
+        { 0.90, 0.90 },
+        { -0.85, 0.90 }
     };
     
     // create some names for the vertex buffer objects
@@ -60,14 +74,19 @@ init(void)
     // we could be reading |vertices| in from a file or dynamically generating them
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
     
-    // must provide *at least* a vertex shader and a fragment shader
-    ShaderInfo shaders[] = {
-        { GL_VERTEX_SHADER, "triangles.vert" },
-        { GL_FRAGMENT_SHADER, "triangles.frag" },
-        { GL_NONE, NULL }
-    };
+    vertex_shader = glCreateShader(GL_VERTEX_SHADER);
+    glShaderSource(vertex_shader, 1, &vertex_shader_text, NULL);
+    glCompileShader(vertex_shader);
     
-    GLuint program = LoadShaders(shaders);
+    fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(fragment_shader, 1, &fragment_shader_text, NULL);
+    glCompileShader(fragment_shader);
+    
+    program = glCreateProgram();
+    glAttachShader(program, vertex_shader);
+    glAttachShader(program, fragment_shader);
+    glLinkProgram(program);
+    
     glUseProgram(program);
     
     // "shader plumbing" associating application data with variables in the shader programs
@@ -87,7 +106,7 @@ display(void)
     glClear(GL_COLOR_BUFFER_BIT);
     
     // Render objects
-    glBindVertexArrayAPPLE(VAOs[Triangles]);
+    glBindVertexArray(VAOs[Triangles]);
     
     // actually send vertex objects to the OpenGL pipeline
     glDrawArrays(GL_TRIANGLES, 0, NumVertices);
@@ -96,12 +115,11 @@ display(void)
     glFlush(); // non-blocking, can use glFinish for blocking, but only in development!
 }
 
-
 int
 main(int argc, char** argv)
 {
     GLFWwindow* window;
-   
+    
     // initialise the GLFW library
     if (!glfwInit())
         return -1;
@@ -117,28 +135,30 @@ main(int argc, char** argv)
     /* Make the window's context current */
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    // glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+    // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwMakeContextCurrent(window);
     
-//    init();
+    init();
     
     // infinite loop
     // invokes callbacks handle user input, determine if window needs repainting
     while (!glfwWindowShouldClose(window))
     {
-        /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
+        glViewport(0, 0, 640, 480);
         
-//        display();
+        /* Render here */
+        // glClear(GL_COLOR_BUFFER_BIT);
+        
+        display();
         
         /* Swap front and back buffers */
-//        glfwSwapBuffers(window);
+        glfwSwapBuffers(window);
         
         /* Poll for and process events */
         glfwPollEvents();
     }
-
+    
     glfwTerminate();
     return 0;
 }

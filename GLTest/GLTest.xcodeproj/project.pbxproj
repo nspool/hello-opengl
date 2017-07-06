@@ -15,7 +15,6 @@
 		73CF0B5F1F08EA93009A858A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CF0B5E1F08EA93009A858A /* IOKit.framework */; };
 		73CF0B611F08EA97009A858A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CF0B601F08EA97009A858A /* Cocoa.framework */; };
 		73CF0B651F08EAB8009A858A /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CF0B641F08EAB8009A858A /* libglfw3.a */; };
-		73F37F151E6D67B000387FE1 /* LoadShaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 73F37F131E6D67B000387FE1 /* LoadShaders.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,8 +41,6 @@
 		73CF0B5E1F08EA93009A858A /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		73CF0B601F08EA97009A858A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		73CF0B641F08EAB8009A858A /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../usr/local/lib/libglfw3.a; sourceTree = "<group>"; };
-		73F37F131E6D67B000387FE1 /* LoadShaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadShaders.cpp; path = ../LoadShaders.cpp; sourceTree = "<group>"; };
-		73F37F141E6D67B000387FE1 /* LoadShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadShaders.h; path = ../LoadShaders.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +79,6 @@
 		7333E8311CDDB53A00419A9D /* GLTest */ = {
 			isa = PBXGroup;
 			children = (
-				733E81F61E6EA85000E54E06 /* Helpers */,
 				733E81F51E6EA84900E54E06 /* Shaders */,
 				7333E8321CDDB53A00419A9D /* main.cpp */,
 			);
@@ -96,15 +92,6 @@
 				732CD8D31CDF5D680035AD89 /* triangles.vert */,
 			);
 			name = Shaders;
-			sourceTree = "<group>";
-		};
-		733E81F61E6EA85000E54E06 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				73F37F131E6D67B000387FE1 /* LoadShaders.cpp */,
-				73F37F141E6D67B000387FE1 /* LoadShaders.h */,
-			);
-			name = Helpers;
 			sourceTree = "<group>";
 		};
 		73CF0B591F08EA3C009A858A /* Frameworks */ = {
@@ -175,7 +162,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73F37F151E6D67B000387FE1 /* LoadShaders.cpp in Sources */,
 				7333E8331CDDB53A00419A9D /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,7 +208,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -263,7 +249,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -273,13 +259,14 @@
 		7333E8371CDDB53A00419A9D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
 					"$(PROJECT_DIR)",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				OTHER_LDFLAGS = "-lGLEW";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -287,13 +274,14 @@
 		7333E8381CDDB53A00419A9D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
 					"$(PROJECT_DIR)",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				OTHER_LDFLAGS = "-lGLEW";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
