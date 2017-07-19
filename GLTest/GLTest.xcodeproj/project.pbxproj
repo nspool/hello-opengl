@@ -36,6 +36,7 @@
 		732CD8D31CDF5D680035AD89 /* triangles.vert */ = {isa = PBXFileReference; explicitFileType = compiled; fileEncoding = 4; name = triangles.vert; path = ../triangles.vert; sourceTree = "<group>"; };
 		7333E82F1CDDB53A00419A9D /* GLTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GLTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7333E8321CDDB53A00419A9D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		73CCDF7C1F1F701E00062BD3 /* linmath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = linmath.h; sourceTree = "<group>"; };
 		73CF0B5A1F08EA3C009A858A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		73CF0B5C1F08EA88009A858A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		73CF0B5E1F08EA93009A858A /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -81,6 +82,7 @@
 			children = (
 				733E81F51E6EA84900E54E06 /* Shaders */,
 				7333E8321CDDB53A00419A9D /* main.cpp */,
+				73CCDF7C1F1F701E00062BD3 /* linmath.h */,
 			);
 			path = GLTest;
 			sourceTree = "<group>";
