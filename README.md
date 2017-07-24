@@ -1,6 +1,7 @@
 # hello-opengl
 
-Small examples for learning OpenGL 
+Small example for learning OpenGL.
 
-Requires the GLEW library installed under /usr/local
-GLEW can be downloaded from: http://glew.sourceforge.net
+Requires the GLFW library installed, which can be obtained from http://www.glfw.org
+
+
